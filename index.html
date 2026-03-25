@@ -20,7 +20,16 @@
         .container { width: 100%; max-width: 500px; margin: auto; padding: 30px 20px; text-align: center; }
 
         .logo { font-family: 'Orbitron'; font-size: 42px; letter-spacing: 5px; margin-bottom: 5px; }
-        .logo span { color: var(--primary); text-shadow: 0 0 25px var(--primary); }
+        @keyframes glowPulse {
+    0% { text-shadow: 0 0 5px #00c2ff; }
+    50% { text-shadow: 0 0 25px #00c2ff; }
+    100% { text-shadow: 0 0 5px #00c2ff; }
+}
+
+.logo span {
+    color: #00f7ff;
+    animation: glowPulse 1.5s infinite;
+}
         .tagline { font-size: 11px; color: #555; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 25px; font-weight: 900; }
 
         /* STATUS ULTRA DESTACADOS - TODOS ON */
