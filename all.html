@@ -3,24 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tacadinha Mod | ULTIMATE SYSTEM V7</title>
+    <title>Tacadinha Mod </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #00c2ff; --glow: rgba(0, 194, 255, 0.6); --bg: #020306; --success: #00ff88; --danger: #ff4444; }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
         
-        body { 
-            background: var(--bg); 
-            color: white; 
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% -10%, #0044ff20, transparent);
-        }
+        body {            
+    background: var(--bg); 
+    color: white; 
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
+
+    cursor: url('cursor.png') 16 16, auto;
+}
+        body:active {
+    cursor: url('cursor.png') 8 8, auto;
+    transform: scale(0.98);
+}
+        /* FUNDO COM IMAGEM BORRADA */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: url('https://cdn.discordapp.com/attachments/1451043342530904310/1486924005939351623/ChatGPT_Image_26_de_mar._de_2026_23_49_53.png?ex=69c74564&is=69c5f3e4&hm=af387b0923aeeb1667d234711b01ded1cecce3f1b74358c4da389ff7c0664f0a&') no-repeat center center;
+background-size: cover;
+
+    filter: blur(12px);
+    transform: scale(1.1); /* evita borda branca do blur */
+    z-index: -2;
+}
+
+/* CAMADA ESCURA PRA DAR CONTRASTE */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
 
         .container { width: 100%; max-width: 500px; margin: auto; padding: 30px 20px; text-align: center; }
 
         .logo { font-family: 'Orbitron'; font-size: 42px; letter-spacing: 5px; margin-bottom: 5px; }
-        .logo span { color: var(--primary); text-shadow: 0 0 25px var(--primary); }
+        @keyframes glowPulse {
+    0% { text-shadow: 0 0 5px #00c2ff; }
+    50% { text-shadow: 0 0 25px #00c2ff; }
+    100% { text-shadow: 0 0 5px #00c2ff; }
+}
+
+.logo span {
+    color: #00f7ff;
+    animation: glowPulse 1.5s infinite;
+}
         .tagline { font-size: 11px; color: #555; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 25px; font-weight: 900; }
 
         /* STATUS ULTRA DESTACADOS - TODOS ON */
@@ -83,7 +128,7 @@
         }
 
         .btn-buy { background: var(--primary); color: #000; box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3); }
-        .btn-trial { background: #25d366; color: #fff; }
+        .btn-trial { background: #25d366; color: #000;
         .btn-test { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; }
 
         .btn-supreme:hover { transform: scale(1.03); filter: brightness(1.2); }
@@ -128,21 +173,21 @@
             <h2 style="font-family: 'Orbitron'; margin-bottom: 25px; font-size: 20px;">SELECIONE O ACESSO</h2>
             
             <!-- PLANO DIÁRIO -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/k9ob5mb')">
+            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/3468gkb')">
                 <div class="plan-name">Plano Diário<br><small style="color:#666; font-weight:400">Válido por 24 Horas</small></div>
                 <div class="plan-price">R$ 49,90</div>
             </div>
 
             <!-- PLANO SEMANAL -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/s4bnpyu')">
+            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/vs5rts8')">
                 <div class="plan-name">Plano Semanal<br><small style="color:#666; font-weight:400">Válido por 7 Dias</small></div>
                 <div class="plan-price">R$ 99,90</div>
             </div>
 
             <!-- PLANO MENSAL -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/mtetqzy_766530')">
+            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/nwho5hq_769689')">
                 <div class="plan-name">Plano Mensal<br><small style="color:var(--success); font-weight:900">RECOMENDADO</small></div>
-                <div class="plan-price">R$ 129,90</div>
+                <div class="plan-price">R$ 149,90</div>
             </div>
 
             <button onclick="fecharModais()" style="background: none; border: none; color: #555; margin-top: 15px; cursor: pointer; font-weight: 900; text-transform: uppercase;">Cancelar</button>
@@ -162,7 +207,7 @@
     </div>
 
     <div class="container">
-        <div class="logo">POOL <span>VIP</span></div>
+        <div class="logo">Tacadinha <span>Mod</span></div>
         <span class="tagline">The Ultimate System</span>
 
         <!-- STATUS DESTACADOS (TODOS ON) -->
@@ -186,12 +231,12 @@
         </button>
 
         <!-- Teste Grátis -->
-        <a href="https://chat.whatsapp.com/FSIaxh8osCCIk8TMYfx0L5" target="_blank" class="btn-supreme btn-trial">
+        <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-trial">
             <i class="fab fa-whatsapp"></i> Teste Grátis 45 Minutos
         </a>
 
         <!-- Grupo -->
-        <a href="https://chat.whatsapp.com/FSIaxh8osCCIk8TMYfx0L5" target="_blank" class="btn-supreme btn-test">
+        <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-test">
             <i class="fas fa-users"></i> Grupo Tacadinha
         </a>
 
@@ -200,25 +245,7 @@
             <a href="https://t.me/seu_telegram">Suporte</a>
         </div>
     </div>
-
-    <script>
-        let urlFinal = "";
-
-        function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
-        
-        function prepararCompra(url) {
-            urlFinal = url;
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'flex';
-            document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
-        }
-
-        function fecharModais() {
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'none';
-        }
-
-        window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
-    </script>
+</script>
 </body>
 </html>
+    
