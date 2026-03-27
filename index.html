@@ -246,22 +246,6 @@ body::after {
         </div>
     </div>
 <script>
-document.querySelectorAll("button, a, .btn-supreme").forEach(el => {
-    el.addEventListener("click", function(e) {
-        const effect = document.createElement("div");
-        effect.className = "click-effect";
-
-        effect.style.left = (e.clientX - 10) + "px";
-        effect.style.top = (e.clientY - 10) + "px";
-
-        document.body.appendChild(effect);
-
-        setTimeout(() => {
-            effect.remove();
-        }, 400);
-    });
-});
-</script>
 </body>
     
 
