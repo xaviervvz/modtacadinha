@@ -19,6 +19,10 @@
 
     cursor: url('cursor.png') 16 16, auto;
 }
+        body:active {
+    cursor: url('cursor.png') 8 8, auto;
+    transform: scale(0.98);
+}
         /* FUNDO COM IMAGEM BORRADA */
 body::before {
     content: "";
@@ -260,5 +264,40 @@ body::after {
         }
 
         window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
-    </script>
+<script>
+    let urlFinal = "";
+
+    function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
+    
+    function prepararCompra(url) {
+        urlFinal = url;
+        document.getElementById('modalPlanos').style.display = 'none';
+        document.getElementById('modalAviso').style.display = 'flex';
+        document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
+    }
+
+    function fecharModais() {
+        document.getElementById('modalPlanos').style.display = 'none';
+        document.getElementById('modalAviso').style.display = 'none';
+    }
+
+    window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
+
+    // 🔥 AQUI (cola isso)
+    document.addEventListener("click", function(e) {
+        const effect = document.createElement("div");
+        effect.className = "click-effect";
+
+        effect.style.left = (e.clientX - 10) + "px";
+        effect.style.top = (e.clientY - 10) + "px";
+
+        document.body.appendChild(effect);
+
+        setTimeout(() => {
+            effect.remove();
+        }, 400);
+    });
+</script>
 </body>
+    
+
