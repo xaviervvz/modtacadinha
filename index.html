@@ -1,233 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tacadinha Mod </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #00c2ff; --glow: rgba(0, 194, 255, 0.6); --bg: #020306; --success: #00ff88; --danger: #ff4444; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        
-        body { 
-            background: var(--bg); 
-            color: white; 
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% -10%, #0044ff20, transparent);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tacadinha Mod</title>
 
-        .container { width: 100%; max-width: 500px; margin: auto; padding: 30px 20px; text-align: center; }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
 
-        .logo { font-family: 'Orbitron'; font-size: 42px; letter-spacing: 5px; margin-bottom: 5px; }
-        @keyframes glowPulse {
-    0% { text-shadow: 0 0 5px #00c2ff; }
-    50% { text-shadow: 0 0 25px #00c2ff; }
-    100% { text-shadow: 0 0 5px #00c2ff; }
+<style>
+:root { --primary: #00c2ff; --glow: rgba(0, 194, 255, 0.6); --bg: #020306; --success: #00ff88; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+/* BODY AJUSTADO */
+body { 
+    background: var(--bg); 
+    color: white; 
+    overflow-x: hidden;
+    position: relative;
+    z-index: 0;
 }
 
-.logo span {
-    color: #00f7ff;
-    animation: glowPulse 1.5s infinite;
+/* IMAGEM BORRADA */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background: url('fundo.png') no-repeat center center;
+    background-size: cover;
+
+    filter: blur(12px);
+    transform: scale(1.1);
+    z-index: -2;
 }
-        .tagline { font-size: 11px; color: #555; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 25px; font-weight: 900; }
 
-        /* STATUS ULTRA DESTACADOS - TODOS ON */
-        .system-status {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .status-box {
-            background: rgba(255,255,255,0.03);
-            padding: 15px 5px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.05);
-            font-size: 10px;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .status-box i { display: block; font-size: 18px; margin-bottom: 8px; }
-        
-        /* Classe ON com brilho verde */
-        .status-box.on { 
-            border-color: var(--success); 
-            color: var(--success); 
-            box-shadow: inset 0 0 15px rgba(0, 255, 136, 0.1), 0 0 15px rgba(0, 255, 136, 0.2); 
-            text-shadow: 0 0 5px rgba(0, 255, 136, 0.5);
-        }
+/* ESCURECIMENTO */
+body::after {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 
-        /* BADGE ANTI-BAN */
-        .antiban-badge {
-            background: linear-gradient(90deg, #00ff88 0%, #00c2ff 100%);
-            color: #000;
-            padding: 8px 25px;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
-            text-transform: uppercase;
-        }
+    background: rgba(0,0,0,0.65);
+    z-index: -1;
+}
 
-        /* VÍDEO */
-        .main-video {
-            width: 100%; position: relative; padding-bottom: 56.25%; height: 0;
-            border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #000; overflow: hidden; margin-bottom: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-        }
-        .main-video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+.container { max-width: 500px; margin: auto; padding: 30px 20px; text-align: center; }
 
-        .btn-supreme {
-            display: flex; align-items: center; justify-content: center; gap: 15px;
-            width: 100%; padding: 22px; margin-bottom: 15px; border-radius: 20px;
-            text-decoration: none; font-weight: 900; font-size: 16px;
-            text-transform: uppercase; transition: 0.3s;
-            cursor: pointer; border: none;
-        }
+.logo { font-family: 'Orbitron'; font-size: 42px; letter-spacing: 5px; }
 
-        .btn-buy { background: var(--primary); color: #000; box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3); }
-        .btn-trial { background: #25d366; color: #fff; }
-        .btn-test { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; }
+@keyframes glowPulse {
+0% { text-shadow: 0 0 5px #00c2ff; }
+50% { text-shadow: 0 0 25px #00c2ff; }
+100% { text-shadow: 0 0 5px #00c2ff; }
+}
 
-        .btn-supreme:hover { transform: scale(1.03); filter: brightness(1.2); }
+.logo span { color: #00f7ff; animation: glowPulse 1.5s infinite; }
 
-        /* MODAIS */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.97); backdrop-filter: blur(10px);
-            display: none; align-items: center; justify-content: center; z-index: 1000; padding: 20px;
-        }
+.tagline { font-size: 11px; color: #555; letter-spacing: 5px; margin-bottom: 25px; }
 
-        .modal-card {
-            background: #0d1117; border: 1px solid var(--primary);
-            padding: 30px; border-radius: 30px; width: 100%; max-width: 400px;
-            text-align: center; box-shadow: 0 0 40px rgba(0, 194, 255, 0.2);
-        }
+.system-status { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 25px; }
 
-        .plan-option {
-            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
-            padding: 22px; border-radius: 20px; margin-bottom: 12px; cursor: pointer;
-            transition: 0.3s; display: flex; justify-content: space-between; align-items: center;
-        }
-        .plan-option:hover { border-color: var(--primary); background: rgba(0, 194, 255, 0.1); }
-        .plan-price { font-family: 'Orbitron'; color: var(--primary); font-size: 19px; }
-        .plan-name { font-weight: 900; text-transform: uppercase; font-size: 14px; text-align: left; }
+.status-box {
+    background: rgba(255,255,255,0.03);
+    padding: 15px 5px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: 900;
+}
 
-        .btn-confirm {
-            background: var(--primary); color: #000; padding: 20px;
-            border-radius: 15px; font-weight: 900; border: none; cursor: pointer;
-            text-transform: uppercase; width: 100%; margin-top: 15px;
-        }
+.status-box.on { 
+    color: var(--success); 
+    box-shadow: 0 0 15px rgba(0,255,136,0.3);
+}
 
-        .footer-nav { margin-top: 50px; display: flex; justify-content: center; gap: 20px; }
-        .footer-nav a { color: #555; text-decoration: none; font-size: 11px; font-weight: 900; text-transform: uppercase; }
-    </style>
+.antiban-badge {
+    background: linear-gradient(90deg, #00ff88, #00c2ff);
+    color: #000;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.main-video {
+    width: 100%;
+    padding-bottom: 56.25%;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.main-video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-supreme {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.btn-buy { background: #00c2ff; color: #000; }
+.btn-trial { background: #25d366; color: #fff; }
+.btn-test { background: rgba(255,255,255,0.1); color: #fff; }
+
+.footer-nav { margin-top: 40px; }
+.footer-nav a { color: #555; margin: 0 10px; font-size: 12px; }
+
+</style>
 </head>
+
 <body>
 
-    <!-- MODAL 1: PLANOS -->
-    <div class="modal-overlay" id="modalPlanos">
-        <div class="modal-card">
-            <h2 style="font-family: 'Orbitron'; margin-bottom: 25px; font-size: 20px;">SELECIONE O ACESSO</h2>
-            
-            <!-- PLANO DIÁRIO -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/3468gkb')">
-                <div class="plan-name">Plano Diário<br><small style="color:#666; font-weight:400">Válido por 24 Horas</small></div>
-                <div class="plan-price">R$ 49,90</div>
-            </div>
+<div class="container">
 
-            <!-- PLANO SEMANAL -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/vs5rts8')">
-                <div class="plan-name">Plano Semanal<br><small style="color:#666; font-weight:400">Válido por 7 Dias</small></div>
-                <div class="plan-price">R$ 99,90</div>
-            </div>
+<div class="logo">Tacadinha <span>Mod</span></div>
+<span class="tagline">The Ultimate System</span>
 
-            <!-- PLANO MENSAL -->
-            <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/nwho5hq_769689')">
-                <div class="plan-name">Plano Mensal<br><small style="color:var(--success); font-weight:900">RECOMENDADO</small></div>
-                <div class="plan-price">R$ 149,90</div>
-            </div>
+<div class="system-status">
+<div class="status-box on"><i class="fab fa-android"></i><br>Android</div>
+<div class="status-box on"><i class="fab fa-apple"></i><br>iOS</div>
+<div class="status-box on"><i class="fas fa-desktop"></i><br>PC</div>
+</div>
 
-            <button onclick="fecharModais()" style="background: none; border: none; color: #555; margin-top: 15px; cursor: pointer; font-weight: 900; text-transform: uppercase;">Cancelar</button>
-        </div>
-    </div>
+<div class="antiban-badge">
+<i class="fas fa-user-shield"></i> 100% Anti-Ban
+</div>
 
-    <!-- MODAL 2: AVISO -->
-    <div class="modal-overlay" id="modalAviso">
-        <div class="modal-card">
-            <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 40px; margin-bottom: 20px;"></i>
-            <h2 style="font-family: 'Orbitron'; margin-bottom: 15px; font-size: 18px;">LEIA COM ATENÇÃO</h2>
-            <p style="font-size: 14px; color: #ccc; margin-bottom: 20px; line-height: 1.6;">
-                O e-mail da compra será vinculado à sua chave. Use um e-mail válido para receber o acesso instantaneamente.
-            </p>
-            <button class="btn-confirm" id="btnIrCheckout">ENTENDI E QUERO COMPRAR</button>
-        </div>
-    </div>
+<div class="main-video">
+<iframe src="https://www.youtube.com/embed/wrXRZGIkKkY" allowfullscreen></iframe>
+</div>
 
-    <div class="container">
-        <div class="logo">Tacadinha <span>Mod</span></div>
-        <span class="tagline">The Ultimate System</span>
+<a href="#" class="btn-supreme btn-buy">VER PLANOS</a>
+<a href="#" class="btn-supreme btn-trial">Teste Grátis</a>
+<a href="#" class="btn-supreme btn-test">Grupo</a>
 
-        <!-- STATUS DESTACADOS (TODOS ON) -->
-        <div class="system-status">
-            <div class="status-box on"><i class="fab fa-android"></i> Android<br>ON</div>
-            <div class="status-box on"><i class="fab fa-apple"></i> iOS<br>ON</div>
-            <div class="status-box on"><i class="fas fa-desktop"></i> PC<br>ON</div>
-        </div>
+<div class="footer-nav">
+<a href="#">Resgate</a>
+<a href="#">Suporte</a>
+</div>
 
-        <div class="antiban-badge">
-            <i class="fas fa-user-shield"></i> 100% Anti-Ban Ativo
-        </div>
+</div>
 
-        <div class="main-video">
-           <iframe src="https://www.youtube.com/embed/wrXRZGIkKkY?modestbranding=1&rel=0" allowfullscreen></iframe>
-        </div>
-        
-        <!-- Botão Principal Atualizado -->
-        <button onclick="abrirPlanos()" class="btn-supreme btn-buy">
-            <i class="fas fa-list-ul"></i> VER PLANOS
-        </button>
-
-        <!-- Teste Grátis -->
-        <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-trial">
-            <i class="fab fa-whatsapp"></i> Teste Grátis 45 Minutos
-        </a>
-
-        <!-- Grupo -->
-        <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-test">
-            <i class="fas fa-users"></i> Grupo Tacadinha
-        </a>
-
-        <div class="footer-nav">
-            <a href="/resgate">Resgate</a>
-            <a href="https://t.me/seu_telegram">Suporte</a>
-        </div>
-    </div>
-
-    <script>
-        let urlFinal = "";
-
-        function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
-        
-        function prepararCompra(url) {
-            urlFinal = url;
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'flex';
-            document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
-        }
-
-        function fecharModais() {
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'none';
-        }
-
-        window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
-    </script>
 </body>
 </html>
