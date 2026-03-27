@@ -246,55 +246,40 @@ body::after {
         </div>
     </div>
     <script>
-        let urlFinal = "";
+let urlFinal = "";
 
-        function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
-        
-        function prepararCompra(url) {
-            urlFinal = url;
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'flex';
-            document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
-        }
+function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
 
-        function fecharModais() {
-            document.getElementById('modalPlanos').style.display = 'none';
-            document.getElementById('modalAviso').style.display = 'none';
-        }
+function prepararCompra(url) {
+    urlFinal = url;
+    document.getElementById('modalPlanos').style.display = 'none';
+    document.getElementById('modalAviso').style.display = 'flex';
+    document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
+}
 
-        window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
-    let urlFinal = "";
+function fecharModais() {
+    document.getElementById('modalPlanos').style.display = 'none';
+    document.getElementById('modalAviso').style.display = 'none';
+}
 
-    function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
-    
-    function prepararCompra(url) {
-        urlFinal = url;
-        document.getElementById('modalPlanos').style.display = 'none';
-        document.getElementById('modalAviso').style.display = 'flex';
-        document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
-    }
+window.onclick = function(e) { 
+    if (e.target.className === 'modal-overlay') fecharModais(); 
+}
 
-    function fecharModais() {
-        document.getElementById('modalPlanos').style.display = 'none';
-        document.getElementById('modalAviso').style.display = 'none';
-    }
+// 🔥 efeito de clique (deixa isso aqui)
+document.addEventListener("click", function(e) {
+    const effect = document.createElement("div");
+    effect.className = "click-effect";
 
-    window.onclick = function(e) { if (e.target.className === 'modal-overlay') fecharModais(); }
+    effect.style.left = (e.clientX - 10) + "px";
+    effect.style.top = (e.clientY - 10) + "px";
 
-    // 🔥 AQUI (cola isso)
-    document.addEventListener("click", function(e) {
-        const effect = document.createElement("div");
-        effect.className = "click-effect";
+    document.body.appendChild(effect);
 
-        effect.style.left = (e.clientX - 10) + "px";
-        effect.style.top = (e.clientY - 10) + "px";
-
-        document.body.appendChild(effect);
-
-        setTimeout(() => {
-            effect.remove();
-        }, 400);
-    });
+    setTimeout(() => {
+        effect.remove();
+    }, 400);
+});
 </script>
 </body>
     
