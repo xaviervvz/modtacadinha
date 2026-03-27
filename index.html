@@ -17,7 +17,7 @@
             --success-dark: #25d366;
             --danger: #ff4444;
             --text-soft: rgba(255,255,255,0.72);
-            --card: rgba(7, 10, 16, 0.58);
+            --card: rgba(7, 10, 16, 0.60);
             --card-border: rgba(255,255,255,0.08);
         }
 
@@ -45,7 +45,13 @@
             background-size: cover;
             filter: blur(14px);
             transform: scale(1.08);
+            animation: bgZoom 18s ease-in-out infinite alternate;
             z-index: -3;
+        }
+
+        @keyframes bgZoom {
+            0% { transform: scale(1.08); }
+            100% { transform: scale(1.14); }
         }
 
         body::after {
@@ -53,8 +59,8 @@
             position: fixed;
             inset: 0;
             background:
-                radial-gradient(circle at 50% 0%, rgba(0,194,255,0.08), transparent 35%),
-                linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.72));
+                radial-gradient(circle at 50% 0%, rgba(0,194,255,0.10), transparent 35%),
+                linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.74));
             z-index: -2;
         }
 
@@ -74,7 +80,41 @@
             backdrop-filter: blur(16px);
             box-shadow:
                 0 20px 60px rgba(0,0,0,0.45),
-                0 0 0 1px rgba(255,255,255,0.02) inset;
+                0 0 0 1px rgba(255,255,255,0.02) inset,
+                0 0 18px rgba(0,194,255,0.08);
+            animation: cardEntrance 0.85s ease-out, cardGlow 3.2s ease-in-out infinite;
+        }
+
+        @keyframes cardEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(28px) scale(0.975);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes cardGlow {
+            0% {
+                box-shadow:
+                    0 20px 60px rgba(0,0,0,0.45),
+                    0 0 0 1px rgba(255,255,255,0.02) inset,
+                    0 0 18px rgba(0,194,255,0.08);
+            }
+            50% {
+                box-shadow:
+                    0 20px 60px rgba(0,0,0,0.45),
+                    0 0 0 1px rgba(255,255,255,0.02) inset,
+                    0 0 34px rgba(0,194,255,0.22);
+            }
+            100% {
+                box-shadow:
+                    0 20px 60px rgba(0,0,0,0.45),
+                    0 0 0 1px rgba(255,255,255,0.02) inset,
+                    0 0 18px rgba(0,194,255,0.08);
+            }
         }
 
         .logo {
@@ -104,7 +144,7 @@
             letter-spacing: 5px;
             text-transform: uppercase;
             display: block;
-            margin-bottom: 24px;
+            margin-bottom: 22px;
             font-weight: 900;
         }
 
@@ -120,6 +160,23 @@
             color: var(--text-soft);
             font-size: 12px;
             font-weight: 700;
+            animation: fadeMini 1.1s ease-out;
+        }
+
+        .live-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 16px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(0,194,255,0.08);
+            border: 1px solid rgba(0,194,255,0.16);
+            color: rgba(255,255,255,0.9);
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 0 18px rgba(0,194,255,0.08);
+            animation: fadeMini 1.25s ease-out;
         }
 
         .system-status {
@@ -127,6 +184,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 10px;
             margin-bottom: 18px;
+            animation: fadeMini 1.2s ease-out;
         }
 
         .status-box {
@@ -139,6 +197,14 @@
             text-transform: uppercase;
             transition: 0.25s ease;
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+        }
+
+        .status-box:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,255,255,0.14);
+            box-shadow:
+                inset 0 0 18px rgba(255,255,255,0.03),
+                0 10px 24px rgba(0,0,0,0.28);
         }
 
         .status-box i {
@@ -167,9 +233,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 22px;
+            margin-bottom: 18px;
             box-shadow: 0 0 28px rgba(0, 255, 136, 0.18);
             text-transform: uppercase;
+            animation: fadeMini 1.3s ease-out;
         }
 
         .main-video {
@@ -184,7 +251,18 @@
             margin-bottom: 22px;
             box-shadow:
                 0 20px 50px rgba(0,0,0,0.65),
-                0 0 0 1px rgba(255,255,255,0.02) inset;
+                0 0 0 1px rgba(255,255,255,0.02) inset,
+                0 0 22px rgba(0,194,255,0.06);
+            transition: 0.3s ease;
+            animation: fadeMini 1.4s ease-out;
+        }
+
+        .main-video:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 24px 55px rgba(0,0,0,0.68),
+                0 0 0 1px rgba(255,255,255,0.02) inset,
+                0 0 28px rgba(0,194,255,0.10);
         }
 
         .main-video iframe {
@@ -200,6 +278,7 @@
             flex-direction: column;
             gap: 12px;
             margin-bottom: 18px;
+            animation: fadeMini 1.5s ease-out;
         }
 
         .btn-supreme {
@@ -230,6 +309,30 @@
             background: linear-gradient(180deg, #1ad1ff 0%, #00b7f5 100%);
             color: #000;
             box-shadow: 0 12px 28px rgba(0, 194, 255, 0.26);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-buy::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.38),
+                transparent
+            );
+            transform: skewX(-20deg);
+            animation: shineBtn 2.8s linear infinite;
+        }
+
+        @keyframes shineBtn {
+            0% { left: -120%; }
+            100% { left: 140%; }
         }
 
         .btn-trial {
@@ -257,6 +360,7 @@
             padding: 18px 16px;
             text-align: left;
             box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+            animation: fadeMini 1.6s ease-out;
         }
 
         .benefits-title {
@@ -409,6 +513,17 @@
             text-transform: uppercase;
         }
 
+        @keyframes fadeMini {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 600px) {
             .container {
                 padding: 18px 12px 32px;
@@ -499,6 +614,10 @@
 
             <div class="antiban-badge">
                 <i class="fas fa-user-shield"></i> 100% Anti-Ban Ativo
+            </div>
+
+            <div class="live-info">
+                <i class="fas fa-fire"></i> Acesso rápido • suporte disponível
             </div>
 
             <div class="main-video">
