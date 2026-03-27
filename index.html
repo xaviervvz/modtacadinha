@@ -245,41 +245,6 @@ body::after {
             <a href="https://t.me/seu_telegram">Suporte</a>
         </div>
     </div>
-    <script>
-let urlFinal = "";
-
-function abrirPlanos() { document.getElementById('modalPlanos').style.display = 'flex'; }
-
-function prepararCompra(url) {
-    urlFinal = url;
-    document.getElementById('modalPlanos').style.display = 'none';
-    document.getElementById('modalAviso').style.display = 'flex';
-    document.getElementById('btnIrCheckout').onclick = function() { window.location.href = urlFinal; };
-}
-
-function fecharModais() {
-    document.getElementById('modalPlanos').style.display = 'none';
-    document.getElementById('modalAviso').style.display = 'none';
-}
-
-window.onclick = function(e) { 
-    if (e.target.className === 'modal-overlay') fecharModais(); 
-}
-
-// 🔥 efeito de clique (deixa isso aqui)
-document.addEventListener("click", function(e) {
-    const effect = document.createElement("div");
-    effect.className = "click-effect";
-
-    effect.style.left = (e.clientX - 10) + "px";
-    effect.style.top = (e.clientY - 10) + "px";
-
-    document.body.appendChild(effect);
-
-    setTimeout(() => {
-        effect.remove();
-    }, 400);
-});
 </script>
 </body>
     
