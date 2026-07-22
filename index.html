@@ -10,13 +10,13 @@
 <style>
     :root {
         --primary: #00c2ff;
-        --primary-strong: #00a6ff;
-        --glow: rgba(0, 194, 255, 0.45);
-        --bg: #020306;
+        --primary-glow: rgba(0, 194, 255, 0.5);
         --success: #00ff88;
-        --text-soft: rgba(255,255,255,0.72);
-        --card: rgba(7, 10, 16, 0.70);
-        --card-border: rgba(255,255,255,0.08);
+        --success-glow: rgba(0, 255, 136, 0.4);
+        --gold: #ffd700;
+        --bg: #030509;
+        --card-bg: rgba(13, 19, 31, 0.75);
+        --card-border: rgba(0, 194, 255, 0.15);
     }
 
     * {
@@ -30,186 +30,204 @@
         background: var(--bg);
         color: white;
         overflow-x: hidden;
-        position: relative;
         min-height: 100vh;
+        position: relative;
     }
 
-    body::after {
+    /* Fundo com efeito de luz sutil */
+    body::before {
         content: "";
         position: fixed;
         inset: 0;
-        background:
-            radial-gradient(circle at 50% 0%, rgba(0,194,255,0.12), transparent 40%),
-            linear-gradient(to bottom, rgba(0,0,0,0.40), rgba(0,0,0,0.85));
-        z-index: -2;
+        background: 
+            radial-gradient(circle at 50% 10%, rgba(0, 194, 255, 0.15), transparent 50%),
+            radial-gradient(circle at 50% 80%, rgba(0, 255, 136, 0.08), transparent 50%);
+        z-index: -1;
     }
 
     .container {
         width: 100%;
         max-width: 580px;
         margin: 0 auto;
-        padding: 30px 18px 40px;
+        padding: 30px 16px 40px;
         text-align: center;
     }
 
     .main-card {
-        background: var(--card);
+        background: var(--card-bg);
         border: 1px solid var(--card-border);
-        border-radius: 30px;
-        padding: 32px 20px 28px;
-        backdrop-filter: blur(16px);
-        box-shadow:
-            0 20px 60px rgba(0,0,0,0.5),
-            0 0 24px rgba(0,194,255,0.1);
-        animation: cardEntrance 0.85s ease-out;
+        border-radius: 28px;
+        padding: 32px 20px;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 194, 255, 0.08);
     }
 
-    @keyframes cardEntrance {
-        0% {
-            opacity: 0;
-            transform: translateY(28px) scale(0.975);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
+    /* LOGO & HERO */
     .logo {
         font-family: 'Orbitron', sans-serif;
-        font-size: 38px;
-        line-height: 1.1;
+        font-size: 40px;
+        font-weight: 900;
         letter-spacing: 2px;
-        margin-bottom: 8px;
-        color: #fff;
+        margin-bottom: 6px;
     }
 
     .logo span {
         color: var(--primary);
-        text-shadow: 0 0 18px var(--glow);
+        text-shadow: 0 0 20px var(--primary-glow);
     }
 
     .tagline-group {
-        margin-bottom: 22px;
+        margin-bottom: 20px;
     }
 
     .tagline-main {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
-        color: rgba(255,255,255,0.9);
-        margin-bottom: 4px;
+        color: #e2e8f0;
     }
 
-    .tagline-sub {
-        font-size: 13px;
-        color: var(--primary);
-        font-weight: 800;
+    .highlight-gold {
+        color: var(--gold);
+        font-weight: 900;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
+        font-size: 14px;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
     }
 
     .no-pay-badge {
-        background: rgba(0, 255, 136, 0.1);
-        border: 1px solid rgba(0, 255, 136, 0.3);
+        background: linear-gradient(90deg, rgba(0, 255, 136, 0.15), rgba(0, 194, 255, 0.15));
+        border: 1px solid var(--success);
         color: var(--success);
-        padding: 10px 18px;
+        padding: 12px 22px;
         border-radius: 999px;
-        font-weight: 800;
+        font-weight: 900;
         font-size: 13px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 22px;
-        box-shadow: 0 0 18px rgba(0, 255, 136, 0.12);
+        margin-bottom: 24px;
+        box-shadow: 0 0 20px var(--success-glow);
+        text-transform: uppercase;
+        animation: pulseBadge 2.5s infinite ease-in-out;
     }
 
+    @keyframes pulseBadge {
+        0%, 100% { transform: scale(1); box-shadow: 0 0 20px var(--success-glow); }
+        50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
+    }
+
+    /* PILARES DE DESTAQUE */
     .grid-pillars {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-        margin-bottom: 24px;
+        margin-bottom: 26px;
     }
 
     .pillar-box {
-        background: rgba(255,255,255,0.035);
-        padding: 14px 8px;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 16px 8px;
         border-radius: 18px;
-        border: 1px solid rgba(255,255,255,0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         font-size: 11px;
         font-weight: 800;
+        transition: 0.3s;
+    }
+
+    .pillar-box:hover {
+        border-color: var(--primary);
+        background: rgba(0, 194, 255, 0.08);
     }
 
     .pillar-box i {
         display: block;
-        font-size: 20px;
-        margin-bottom: 6px;
+        font-size: 22px;
+        margin-bottom: 8px;
         color: var(--primary);
     }
 
     .divider {
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
-        margin: 24px 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+        margin: 26px 0;
     }
 
     .section-title {
         font-family: 'Orbitron', sans-serif;
         font-size: 16px;
-        margin-bottom: 18px;
-        letter-spacing: 1px;
+        margin-bottom: 20px;
+        letter-spacing: 1.5px;
         color: #fff;
+        text-transform: uppercase;
     }
 
+    /* PASSO A PASSO (COMO FUNCIONA) */
     .steps-container {
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        margin-bottom: 24px;
+        gap: 8px;
         text-align: left;
     }
 
     .step-item {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.06);
-        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 16px;
         border-radius: 16px;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 14px;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 700;
+        color: #cbd5e1;
     }
 
     .step-number {
         background: var(--primary);
         color: #000;
         font-weight: 900;
-        width: 26px;
-        height: 26px;
+        width: 30px;
+        height: 30px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 12px;
+        font-size: 13px;
         flex-shrink: 0;
+        box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    /* Destaque especial para o último passo */
+    .step-item.highlight-step {
+        background: rgba(0, 255, 136, 0.08);
+        border-color: var(--success);
+        color: #fff;
+    }
+
+    .step-item.highlight-step .step-number {
+        background: var(--success);
+        box-shadow: 0 0 12px var(--success-glow);
     }
 
     .step-arrow {
-        color: rgba(255,255,255,0.2);
+        color: rgba(255, 255, 255, 0.25);
         font-size: 12px;
-        margin: -4px 0;
+        margin: 2px 0;
     }
 
+    /* VÍDEO */
     .main-video {
         width: 100%;
         position: relative;
         padding-bottom: 56.25%;
         height: 0;
         border-radius: 20px;
-        border: 1px solid rgba(255,255,255,0.08);
+        border: 1px solid var(--primary);
         background: #000;
         overflow: hidden;
         margin-bottom: 24px;
+        box-shadow: 0 0 25px rgba(0, 194, 255, 0.2);
     }
 
     .main-video iframe {
@@ -220,48 +238,54 @@
         border: none;
     }
 
+    /* BOTÃO CTA DE ALTO IMPACTO */
     .btn-cta {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
         padding: 20px;
         border-radius: 20px;
         text-decoration: none;
         font-weight: 900;
-        font-size: 16px;
+        font-size: 17px;
         text-transform: uppercase;
-        background: linear-gradient(180deg, #1ad1ff 0%, #00b7f5 100%);
+        background: linear-gradient(180deg, #00d5ff 0%, #0088ff 100%);
         color: #000;
-        box-shadow: 0 12px 28px rgba(0, 194, 255, 0.28);
-        transition: 0.25s ease;
+        box-shadow: 0 10px 30px rgba(0, 194, 255, 0.4);
+        transition: 0.3s ease;
         border: none;
         cursor: pointer;
+        animation: btnGlow 2s infinite alternate;
+    }
+
+    @keyframes btnGlow {
+        0% { transform: translateY(0); box-shadow: 0 10px 30px rgba(0, 194, 255, 0.3); }
+        100% { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 194, 255, 0.6); }
     }
 
     .btn-cta:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.05);
+        filter: brightness(1.15);
     }
 
+    /* BENEFÍCIOS (POR QUE CONFIAR?) */
     .benefits-box {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.06);
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 20px;
         padding: 20px;
         text-align: left;
-        margin-bottom: 24px;
     }
 
     .benefit-item {
         display: flex;
         align-items: center;
-        gap: 10px;
-        color: rgba(255,255,255,0.88);
+        gap: 12px;
+        color: #e2e8f0;
         font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 12px;
+        font-weight: 700;
+        margin-bottom: 14px;
     }
 
     .benefit-item:last-child {
@@ -270,56 +294,59 @@
 
     .benefit-item i {
         color: var(--success);
+        font-size: 16px;
     }
 
+    /* FAQ EXPANSÍVEL */
     .faq-container {
         text-align: left;
     }
 
     .faq-item {
-        background: rgba(255,255,255,0.03);
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 14px;
-        padding: 14px 16px;
-        margin-bottom: 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 16px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .faq-item:hover {
+        border-color: rgba(0, 194, 255, 0.4);
     }
 
     .faq-question {
-        font-weight: 700;
+        font-weight: 800;
         font-size: 14px;
         color: #fff;
-        margin-bottom: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .faq-question i {
+        color: var(--primary);
     }
 
     .faq-answer {
         font-size: 13px;
-        color: rgba(255,255,255,0.68);
-        line-height: 1.5;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-top: 10px;
     }
 
     .footer {
-        margin-top: 24px;
-        font-size: 12px;
-        color: rgba(255,255,255,0.3);
+        margin-top: 28px;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.3);
     }
 
     @media (max-width: 600px) {
-        .container {
-            padding: 18px 12px 32px;
-        }
-
-        .main-card {
-            padding: 24px 16px;
-        }
-
-        .logo {
-            font-size: 32px;
-        }
-
-        .btn-cta {
-            font-size: 15px;
-            padding: 18px;
-        }
+        .container { padding: 16px 10px 30px; }
+        .main-card { padding: 24px 14px; }
+        .logo { font-size: 34px; }
+        .btn-cta { font-size: 15px; padding: 18px; }
     }
 </style>
 </head>
@@ -333,11 +360,11 @@
         
         <div class="tagline-group">
             <div class="tagline-main">Aprenda Grátis. Lucre Primeiro.</div>
-            <div class="tagline-sub">Pague Depois.</div>
+            <div class="highlight-gold">⚡ PAGUE DEPOIS</div>
         </div>
 
         <div class="no-pay-badge">
-            <i class="fas fa-hand-holding-usd"></i> Sem pagamento antecipado
+            <i class="fas fa-shield-alt"></i> 100% Sem pagamento antecipado
         </div>
 
         <!-- PILARES -->
@@ -367,23 +394,24 @@
                 <span>Aprende gratuitamente</span>
             </div>
             
-            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+            <div style="text-align: center;"><i class="fas fa-chevron-down step-arrow"></i></div>
 
             <div class="step-item">
                 <span class="step-number">2</span>
                 <span>Faz tudo na sua conta</span>
             </div>
 
-            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+            <div style="text-align: center;"><i class="fas fa-chevron-down step-arrow"></i></div>
 
             <div class="step-item">
                 <span class="step-number">3</span>
                 <span>Obtém lucro</span>
             </div>
 
-            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+            <div style="text-align: center;"><i class="fas fa-chevron-down step-arrow"></i></div>
 
-            <div class="step-item">
+            <!-- PASSO 4 DESTACADO -->
+            <div class="step-item highlight-step">
                 <span class="step-number">4</span>
                 <span>Compartilha apenas parte do primeiro lucro</span>
             </div>
@@ -393,11 +421,11 @@
 
         <!-- VÍDEO -->
         <div class="main-video">
-            <!-- Substitua o link do YouTube abaixo pelo seu vídeo -->
+            <!-- Insira aqui o link do seu vídeo de apresentação -->
             <iframe src="https://www.youtube.com/embed/wrXRZGIkKkY?modestbranding=1&rel=0" allowfullscreen></iframe>
         </div>
 
-        <!-- BOTÃO DE AÇÃO -->
+        <!-- BOTÃO CTA DE ALTO IMPACTO -->
         <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="btn-cta">
             <i class="fas fa-rocket"></i> QUERO COMEÇAR AGORA
         </a>
@@ -408,26 +436,36 @@
         <div class="section-title">POR QUE CONFIAR?</div>
 
         <div class="benefits-box">
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Não cobramos antecipadamente</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Você só paga depois</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Suporte dedicado</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Atualizações constantes</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Não cobramos nada antecipadamente</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Risco Zero: Você só paga depois de lucrar</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Suporte individual e acompanhamento</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Método atualizado e testado</div>
         </div>
 
         <div class="divider"></div>
 
         <!-- FAQ -->
-        <div class="section-title">FAQ</div>
+        <div class="section-title">PERGUNTAS FREQUENTES</div>
 
         <div class="faq-container">
             <div class="faq-item">
-                <div class="faq-question">Preciso pagar algo antes de começar?</div>
-                <div class="faq-answer">Não! Você acessa todo o conteúdo sem pagar nada antecipadamente.</div>
+                <div class="faq-question">
+                    <span>Preciso pagar algo antes de começar?</span>
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="faq-answer">
+                    Não! O acesso a todo o conteúdo é 100% gratuito. Você não coloca o seu cartão e nem faz nenhum PIX antecipado.
+                </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">Quando eu realizo o pagamento?</div>
-                <div class="faq-answer">Apenas após obter seu primeiro resultado/lucro seguindo o método.</div>
+                <div class="faq-question">
+                    <span>Quando e como eu realizo o pagamento?</span>
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <div class="faq-answer">
+                    Você só compartilha a nossa porcentagem depois que o dinheiro já estiver no seu bolso/conta após o seu primeiro lucro.
+                </div>
             </div>
         </div>
 
