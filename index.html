@@ -218,7 +218,7 @@
         box-shadow: 0 0 12px var(--success-glow);
     }
 
-    /* VÍDEO */
+    /* VÍDEO NATIVO MP4 */
     .main-video {
         width: 100%;
         position: relative;
@@ -232,12 +232,13 @@
         box-shadow: 0 0 25px rgba(0, 194, 255, 0.2);
     }
 
-    .main-video iframe {
+    .main-video video {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        border: none;
+        object-fit: cover;
+        border-radius: 20px;
     }
 
     /* BOTÃO CTA EM VERDE NEON */
@@ -436,14 +437,17 @@
 
         <div class="divider"></div>
 
-        <!-- VÍDEO -->
+        <!-- VÍDEO DIRETO DO GITHUB (SEM YOUTUBE) -->
         <div class="main-video">
-            <iframe src="https://www.youtube.com/embed/rk4KT5EJm9c" allowfullscreen></iframe>
+            <video controls playsinline preload="metadata">
+                <source src="Metodoprime.mp4" type="video/mp4">
+                Seu navegador não suporta a exibição deste vídeo.
+            </video>
         </div>
 
-        <!-- BOTÃO CTA NO VERDE DO WHATSAPP + MENSAGEM CLARA -->
+        <!-- BOTÃO CTA NO VERDE DO WHATSAPP -->
         <div class="btn-cta-group">
-            <a href="https://chat.whatsapp.com/L4D9UKlYtNMAkH7Y94JcRA?mode=gi_t" target="_blank" class="btn-cta-green">
+            <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="btn-cta-green">
                 <i class="fab fa-whatsapp"></i> ENTRAR NO GRUPO GRATUITO
             </a>
             <span class="btn-subtext">
