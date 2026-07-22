@@ -34,7 +34,6 @@
         position: relative;
     }
 
-    /* Fundo com efeito de luz sutil */
     body::before {
         content: "";
         position: fixed;
@@ -62,7 +61,6 @@
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 194, 255, 0.08);
     }
 
-    /* LOGO & HERO */
     .logo {
         font-family: 'Orbitron', sans-serif;
         font-size: 40px;
@@ -117,7 +115,6 @@
         50% { transform: scale(1.03); box-shadow: 0 0 30px rgba(0, 255, 136, 0.6); }
     }
 
-    /* PILARES DE DESTAQUE */
     .grid-pillars {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -162,7 +159,6 @@
         text-transform: uppercase;
     }
 
-    /* PASSO A PASSO (COMO FUNCIONA) */
     .steps-container {
         display: flex;
         flex-direction: column;
@@ -217,48 +213,29 @@
         box-shadow: 0 0 12px var(--success-glow);
     }
 
-    /* VÍDEO GOOGLE DRIVE - CORREÇÃO MOBILE */
+    /* CONTAINER DE VÍDEO NATIVO (GITHUB) - 100% RESPONSIVO */
     .main-video {
         width: 100%;
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
         border-radius: 20px;
         border: 1px solid var(--primary);
         background: #000;
         overflow: hidden;
         margin-bottom: 24px;
         box-shadow: 0 0 25px rgba(0, 194, 255, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .main-video iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .main-video video {
         width: 100%;
-        height: 100%;
-        border: none;
+        height: auto;
+        max-height: 70vh; /* Evita que o vídeo fique excessivamente longo em telas na vertical */
+        display: block;
         border-radius: 20px;
+        outline: none;
     }
 
-    /* AJUSTE RESPONSIVO PARA SMARTPHONES */
-    @media (max-width: 600px) {
-        .container { padding: 16px 10px 30px; }
-        .main-card { padding: 24px 14px; }
-        .logo { font-size: 34px; }
-        .btn-cta-green { font-size: 14px; padding: 18px 12px; }
-
-        /* Ajusta o container para compensar a barra do Drive no mobile */
-        .main-video {
-            padding-bottom: 68%;
-        }
-        .main-video iframe {
-            height: 110%;
-            top: -5%;
-        }
-    }
-
-    /* BOTÃO CTA EM VERDE NEON */
     .btn-cta-group {
         margin-bottom: 24px;
     }
@@ -306,7 +283,6 @@
         letter-spacing: 0.5px;
     }
 
-    /* BENEFÍCIOS */
     .benefits-box {
         background: rgba(255, 255, 255, 0.02);
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -334,7 +310,6 @@
         font-size: 16px;
     }
 
-    /* FAQ EXPANSÍVEL */
     .faq-container {
         text-align: left;
     }
@@ -376,6 +351,13 @@
         margin-top: 28px;
         font-size: 11px;
         color: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 600px) {
+        .container { padding: 16px 10px 30px; }
+        .main-card { padding: 24px 14px; }
+        .logo { font-size: 34px; }
+        .btn-cta-green { font-size: 14px; padding: 18px 12px; }
     }
 </style>
 </head>
@@ -447,9 +429,12 @@
 
         <div class="divider"></div>
 
-        <!-- VÍDEO INCORPORADO DO GOOGLE DRIVE COM CORREÇÃO MOBILE -->
+        <!-- VÍDEO HOSTEADO NO GITHUB -->
         <div class="main-video">
-            <iframe src="https://drive.google.com/file/d/1-oGDuEOtqcfqEP1ePZVMFKbmBDkuBtdW/preview" allow="autoplay" allowfullscreen></iframe>
+            <video controls playsinline preload="metadata">
+                <source src="Metodoprime.mp4" type="video/mp4">
+                Seu navegador não suporta a exibição deste vídeo.
+            </video>
         </div>
 
         <!-- BOTÃO CTA NO VERDE DO WHATSAPP -->
