@@ -198,6 +198,15 @@
         box-shadow: 0 0 12px var(--primary-glow);
     }
 
+    /* Destaque para as setas entre passos */
+    .step-arrow {
+        color: var(--primary);
+        font-size: 14px;
+        margin: 4px 0;
+        opacity: 0.85;
+        text-shadow: 0 0 8px var(--primary-glow);
+    }
+
     /* Destaque especial para o último passo */
     .step-item.highlight-step {
         background: rgba(0, 255, 136, 0.08);
@@ -208,12 +217,6 @@
     .step-item.highlight-step .step-number {
         background: var(--success);
         box-shadow: 0 0 12px var(--success-glow);
-    }
-
-    .step-arrow {
-        color: rgba(255, 255, 255, 0.25);
-        font-size: 12px;
-        margin: 2px 0;
     }
 
     /* VÍDEO */
@@ -239,6 +242,10 @@
     }
 
     /* BOTÃO CTA DE ALTO IMPACTO */
+    .btn-cta-group {
+        margin-bottom: 24px;
+    }
+
     .btn-cta {
         display: flex;
         align-items: center;
@@ -267,6 +274,15 @@
 
     .btn-cta:hover {
         filter: brightness(1.15);
+    }
+
+    .btn-subtext {
+        display: block;
+        font-size: 11px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 8px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
     }
 
     /* BENEFÍCIOS (POR QUE CONFIAR?) */
@@ -308,7 +324,6 @@
         border-radius: 16px;
         padding: 16px;
         margin-bottom: 12px;
-        cursor: pointer;
         transition: 0.3s;
     }
 
@@ -421,14 +436,19 @@
 
         <!-- VÍDEO -->
         <div class="main-video">
-            <!-- Insira aqui o link do seu vídeo de apresentação -->
+            <!-- Lembre-se de alterar o src com o ID do seu vídeo do YouTube -->
             <iframe src="https://www.youtube.com/embed/wrXRZGIkKkY?modestbranding=1&rel=0" allowfullscreen></iframe>
         </div>
 
-        <!-- BOTÃO CTA DE ALTO IMPACTO -->
-        <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="btn-cta">
-            <i class="fas fa-rocket"></i> QUERO COMEÇAR AGORA
-        </a>
+        <!-- BOTÃO CTA DE ALTO IMPACTO COM SUBTEXTO -->
+        <div class="btn-cta-group">
+            <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="btn-cta">
+                <i class="fas fa-rocket"></i> QUERO COMEÇAR AGORA
+            </a>
+            <span class="btn-subtext">
+                🔒 Entrada Gratuita • Sem cobranças ocultas
+            </span>
+        </div>
 
         <div class="divider"></div>
 
@@ -444,7 +464,7 @@
 
         <div class="divider"></div>
 
-        <!-- FAQ -->
+        <!-- PERGUNTAS FREQUENTES -->
         <div class="section-title">PERGUNTAS FREQUENTES</div>
 
         <div class="faq-container">
