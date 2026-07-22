@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tacadinha Mod</title>
+    <title>MÉTODO PRIME</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
@@ -15,10 +14,8 @@
         --glow: rgba(0, 194, 255, 0.45);
         --bg: #020306;
         --success: #00ff88;
-        --success-dark: #25d366;
-        --danger: #ff4444;
         --text-soft: rgba(255,255,255,0.72);
-        --card: rgba(7, 10, 16, 0.60);
+        --card: rgba(7, 10, 16, 0.70);
         --card-border: rgba(255,255,255,0.08);
     }
 
@@ -35,24 +32,6 @@
         overflow-x: hidden;
         position: relative;
         min-height: 100vh;
-        cursor: url('cursor.png') 16 16, auto;
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: url('https://cdn.discordapp.com/attachments/1451043342530904310/1486924005939351623/ChatGPT_Image_26_de_mar._de_2026_23_49_53.png?ex=69c74564&is=69c5f3e4&hm=af387b0923aeeb1667d234711b01ded1cecce3f1b74358c4da389ff7c0664f0a&') no-repeat center center;
-        background-size: cover;
-        filter: blur(14px);
-        transform: scale(1.08);
-        animation: bgZoom 18s ease-in-out infinite alternate;
-        z-index: -3;
-    }
-
-    @keyframes bgZoom {
-        0% { transform: scale(1.08); }
-        100% { transform: scale(1.14); }
     }
 
     body::after {
@@ -60,14 +39,14 @@
         position: fixed;
         inset: 0;
         background:
-            radial-gradient(circle at 50% 0%, rgba(0,194,255,0.10), transparent 35%),
-            linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.74));
+            radial-gradient(circle at 50% 0%, rgba(0,194,255,0.12), transparent 40%),
+            linear-gradient(to bottom, rgba(0,0,0,0.40), rgba(0,0,0,0.85));
         z-index: -2;
     }
 
     .container {
         width: 100%;
-        max-width: 560px;
+        max-width: 580px;
         margin: 0 auto;
         padding: 30px 18px 40px;
         text-align: center;
@@ -77,13 +56,12 @@
         background: var(--card);
         border: 1px solid var(--card-border);
         border-radius: 30px;
-        padding: 28px 18px 20px;
+        padding: 32px 20px 28px;
         backdrop-filter: blur(16px);
         box-shadow:
-            0 20px 60px rgba(0,0,0,0.45),
-            0 0 0 1px rgba(255,255,255,0.02) inset,
-            0 0 18px rgba(0,194,255,0.08);
-        animation: cardEntrance 0.85s ease-out, cardGlow 3.2s ease-in-out infinite;
+            0 20px 60px rgba(0,0,0,0.5),
+            0 0 24px rgba(0,194,255,0.1);
+        animation: cardEntrance 0.85s ease-out;
     }
 
     @keyframes cardEntrance {
@@ -97,147 +75,129 @@
         }
     }
 
-    @keyframes cardGlow {
-        0% {
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.45),
-                0 0 0 1px rgba(255,255,255,0.02) inset,
-                0 0 18px rgba(0,194,255,0.08);
-        }
-        50% {
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.45),
-                0 0 0 1px rgba(255,255,255,0.02) inset,
-                0 0 34px rgba(0,194,255,0.22);
-        }
-        100% {
-            box-shadow:
-                0 20px 60px rgba(0,0,0,0.45),
-                0 0 0 1px rgba(255,255,255,0.02) inset,
-                0 0 18px rgba(0,194,255,0.08);
-        }
-    }
-
     .logo {
         font-family: 'Orbitron', sans-serif;
-        font-size: 44px;
-        line-height: 1;
+        font-size: 38px;
+        line-height: 1.1;
         letter-spacing: 2px;
         margin-bottom: 8px;
-        text-shadow: 0 0 18px rgba(255,255,255,0.08);
+        color: #fff;
     }
 
     .logo span {
         color: var(--primary);
-        text-shadow: 0 0 18px var(--glow), 0 0 30px rgba(0,194,255,0.18);
-        animation: glowPulse 1.8s infinite ease-in-out;
+        text-shadow: 0 0 18px var(--glow);
     }
 
-    @keyframes glowPulse {
-        0% { opacity: 0.9; text-shadow: 0 0 12px var(--glow), 0 0 24px rgba(0,194,255,0.10); }
-        50% { opacity: 1; text-shadow: 0 0 22px var(--glow), 0 0 40px rgba(0,194,255,0.22); }
-        100% { opacity: 0.9; text-shadow: 0 0 12px var(--glow), 0 0 24px rgba(0,194,255,0.10); }
-    }
-
-    .tagline {
-        font-size: 11px;
-        color: rgba(255,255,255,0.34);
-        letter-spacing: 5px;
-        text-transform: uppercase;
-        display: block;
+    .tagline-group {
         margin-bottom: 22px;
-        font-weight: 900;
     }
 
-    .intro-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 18px;
-        padding: 8px 14px;
-        border-radius: 999px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.06);
-        color: var(--text-soft);
-        font-size: 12px;
+    .tagline-main {
+        font-size: 15px;
         font-weight: 700;
-        animation: fadeMini 1.1s ease-out;
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 4px;
     }
 
-    .live-info {
+    .tagline-sub {
+        font-size: 13px;
+        color: var(--primary);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .no-pay-badge {
+        background: rgba(0, 255, 136, 0.1);
+        border: 1px solid rgba(0, 255, 136, 0.3);
+        color: var(--success);
+        padding: 10px 18px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: 13px;
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        margin-bottom: 16px;
-        padding: 9px 14px;
-        border-radius: 999px;
-        background: rgba(0,194,255,0.08);
-        border: 1px solid rgba(0,194,255,0.16);
-        color: rgba(255,255,255,0.9);
-        font-size: 12px;
-        font-weight: 800;
-        box-shadow: 0 0 18px rgba(0,194,255,0.08);
-        animation: fadeMini 1.25s ease-out;
+        margin-bottom: 22px;
+        box-shadow: 0 0 18px rgba(0, 255, 136, 0.12);
     }
 
-    .system-status {
+    .grid-pillars {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
-        margin-bottom: 18px;
-        animation: fadeMini 1.2s ease-out;
+        margin-bottom: 24px;
     }
 
-    .status-box {
+    .pillar-box {
         background: rgba(255,255,255,0.035);
-        padding: 16px 8px;
+        padding: 14px 8px;
         border-radius: 18px;
         border: 1px solid rgba(255,255,255,0.06);
-        font-size: 10px;
-        font-weight: 900;
-        text-transform: uppercase;
-        transition: 0.25s ease;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.015);
+        font-size: 11px;
+        font-weight: 800;
     }
 
-    .status-box:hover {
-        transform: translateY(-4px);
-        border-color: rgba(255,255,255,0.14);
-        box-shadow:
-            inset 0 0 18px rgba(255,255,255,0.03),
-            0 10px 24px rgba(0,0,0,0.28);
-    }
-
-    .status-box i {
+    .pillar-box i {
         display: block;
-        font-size: 17px;
-        margin-bottom: 8px;
+        font-size: 20px;
+        margin-bottom: 6px;
+        color: var(--primary);
     }
 
-    .status-box.on {
-        border-color: rgba(0,255,136,0.55);
-        color: var(--success);
-        box-shadow:
-            inset 0 0 18px rgba(0,255,136,0.06),
-            0 0 18px rgba(0,255,136,0.12);
-        text-shadow: 0 0 8px rgba(0,255,136,0.30);
+    .divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+        margin: 24px 0;
     }
 
-    .antiban-badge {
-        background: linear-gradient(90deg, #00ff88 0%, #00c2ff 100%);
+    .section-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 16px;
+        margin-bottom: 18px;
+        letter-spacing: 1px;
+        color: #fff;
+    }
+
+    .steps-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .step-item {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        padding: 14px 16px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .step-number {
+        background: var(--primary);
         color: #000;
-        padding: 10px 20px;
-        border-radius: 999px;
         font-weight: 900;
-        font-size: 12px;
-        display: inline-flex;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
-        margin-bottom: 18px;
-        box-shadow: 0 0 28px rgba(0, 255, 136, 0.18);
-        text-transform: uppercase;
-        animation: fadeMini 1.3s ease-out;
+        font-size: 12px;
+        flex-shrink: 0;
+    }
+
+    .step-arrow {
+        color: rgba(255,255,255,0.2);
+        font-size: 12px;
+        margin: -4px 0;
     }
 
     .main-video {
@@ -245,25 +205,11 @@
         position: relative;
         padding-bottom: 56.25%;
         height: 0;
-        border-radius: 24px;
+        border-radius: 20px;
         border: 1px solid rgba(255,255,255,0.08);
         background: #000;
         overflow: hidden;
-        margin-bottom: 22px;
-        box-shadow:
-            0 20px 50px rgba(0,0,0,0.65),
-            0 0 0 1px rgba(255,255,255,0.02) inset,
-            0 0 22px rgba(0,194,255,0.06);
-        transition: 0.3s ease;
-        animation: fadeMini 1.4s ease-out;
-    }
-
-    .main-video:hover {
-        transform: translateY(-2px);
-        box-shadow:
-            0 24px 55px rgba(0,0,0,0.68),
-            0 0 0 1px rgba(255,255,255,0.02) inset,
-            0 0 28px rgba(0,194,255,0.10);
+        margin-bottom: 24px;
     }
 
     .main-video iframe {
@@ -274,112 +220,48 @@
         border: none;
     }
 
-    .button-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        margin-bottom: 18px;
-        animation: fadeMini 1.5s ease-out;
-    }
-
-    .btn-supreme {
+    .btn-cta {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
-        padding: 19px 20px;
+        padding: 20px;
         border-radius: 20px;
         text-decoration: none;
         font-weight: 900;
         font-size: 16px;
         text-transform: uppercase;
-        transition: 0.28s ease;
+        background: linear-gradient(180deg, #1ad1ff 0%, #00b7f5 100%);
+        color: #000;
+        box-shadow: 0 12px 28px rgba(0, 194, 255, 0.28);
+        transition: 0.25s ease;
         border: none;
-        position: relative;
-        overflow: hidden;
-        cursor: url('cursor.png') 16 16, pointer;
+        cursor: pointer;
     }
 
-    .btn-supreme:hover {
-        transform: translateY(-2px) scale(1.01);
+    .btn-cta:hover {
+        transform: translateY(-2px);
         filter: brightness(1.05);
     }
 
-    .btn-buy {
-        background: linear-gradient(180deg, #1ad1ff 0%, #00b7f5 100%);
-        color: #000;
-        box-shadow: 0 12px 28px rgba(0, 194, 255, 0.26);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-buy::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -120%;
-        width: 80%;
-        height: 100%;
-        background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255,255,255,0.38),
-            transparent
-        );
-        transform: skewX(-20deg);
-        animation: shineBtn 2.8s linear infinite;
-    }
-
-    @keyframes shineBtn {
-        0% { left: -120%; }
-        100% { left: 140%; }
-    }
-
-    .btn-trial {
-        background: linear-gradient(180deg, #31da6b 0%, #28c95d 100%);
-        color: #000;
-        box-shadow: 0 12px 28px rgba(37, 211, 102, 0.20);
-    }
-
-    .btn-test {
-        background: rgba(255,255,255,0.05);
-        border: 1px solid rgba(255,255,255,0.10);
-        color: #fff;
-        backdrop-filter: blur(10px);
-    }
-
-    .btn-supreme i {
-        font-size: 15px;
-    }
-
     .benefits-box {
-        margin-top: 2px;
-        background: rgba(255,255,255,0.04);
-        border: 1px solid rgba(255,255,255,0.07);
-        border-radius: 22px;
-        padding: 18px 16px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 20px;
+        padding: 20px;
         text-align: left;
-        box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
-        animation: fadeMini 1.6s ease-out;
-    }
-
-    .benefits-title {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 14px;
-        margin-bottom: 14px;
-        color: #fff;
-        letter-spacing: 1px;
+        margin-bottom: 24px;
     }
 
     .benefit-item {
         display: flex;
         align-items: center;
         gap: 10px;
-        color: rgba(255,255,255,0.84);
+        color: rgba(255,255,255,0.88);
         font-size: 14px;
         font-weight: 600;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
     .benefit-item:last-child {
@@ -388,141 +270,37 @@
 
     .benefit-item i {
         color: var(--success);
-        font-size: 13px;
     }
 
-    .footer-nav {
-        margin-top: 18px;
-        display: flex;
-        justify-content: center;
-        gap: 18px;
-    }
-
-    .footer-nav a {
-        color: rgba(255,255,255,0.28);
-        text-decoration: none;
-        font-size: 11px;
-        font-weight: 900;
-        text-transform: uppercase;
-        transition: 0.25s ease;
-        cursor: url('cursor.png') 16 16, pointer;
-    }
-
-    .footer-nav a:hover {
-        color: rgba(255,255,255,0.62);
-    }
-
-    .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.88);
-        backdrop-filter: blur(12px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        padding: 20px;
-    }
-
-    .modal-card {
-        background: rgba(13, 17, 23, 0.88);
-        border: 1px solid rgba(0,194,255,0.35);
-        padding: 28px 20px;
-        border-radius: 28px;
-        width: 100%;
-        max-width: 420px;
-        text-align: center;
-        box-shadow:
-            0 0 40px rgba(0, 194, 255, 0.12),
-            0 20px 50px rgba(0,0,0,0.45);
-        backdrop-filter: blur(18px);
-    }
-
-    .modal-card h2 {
-        font-family: 'Orbitron', sans-serif;
-        margin-bottom: 22px;
-        font-size: 19px;
-    }
-
-    .plan-option {
-        background: rgba(255,255,255,0.035);
-        border: 1px solid rgba(255,255,255,0.08);
-        padding: 20px;
-        border-radius: 20px;
-        margin-bottom: 12px;
-        cursor: url('cursor.png') 16 16, pointer;
-        transition: 0.25s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 14px;
+    .faq-container {
         text-align: left;
     }
 
-    .plan-option:hover {
-        border-color: rgba(0,194,255,0.40);
-        background: rgba(0, 194, 255, 0.08);
-        transform: translateY(-2px);
+    .faq-item {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 14px;
+        padding: 14px 16px;
+        margin-bottom: 10px;
     }
 
-    .plan-price {
-        font-family: 'Orbitron', sans-serif;
-        color: var(--primary);
-        font-size: 18px;
-        white-space: nowrap;
-    }
-
-    .plan-name {
-        font-weight: 900;
-        text-transform: uppercase;
+    .faq-question {
+        font-weight: 700;
         font-size: 14px;
-        line-height: 1.3;
+        color: #fff;
+        margin-bottom: 6px;
     }
 
-    .plan-name small {
-        color: #7d8590;
-        font-weight: 500;
-        text-transform: none;
+    .faq-answer {
+        font-size: 13px;
+        color: rgba(255,255,255,0.68);
+        line-height: 1.5;
     }
 
-    .btn-confirm {
-        background: linear-gradient(180deg, #1ad1ff 0%, #00b7f5 100%);
-        color: #000;
-        padding: 18px;
-        border-radius: 16px;
-        font-weight: 900;
-        border: none;
-        cursor: url('cursor.png') 16 16, pointer;
-        text-transform: uppercase;
-        width: 100%;
-        margin-top: 10px;
-        transition: 0.25s ease;
-    }
-
-    .btn-confirm:hover {
-        transform: translateY(-1px);
-        filter: brightness(1.05);
-    }
-
-    .modal-cancel {
-        background: none;
-        border: none;
-        color: #66707d;
-        margin-top: 14px;
-        cursor: url('cursor.png') 16 16, pointer;
-        font-weight: 900;
-        text-transform: uppercase;
-    }
-
-    @keyframes fadeMini {
-        0% {
-            opacity: 0;
-            transform: translateY(12px);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .footer {
+        margin-top: 24px;
+        font-size: 12px;
+        color: rgba(255,255,255,0.3);
     }
 
     @media (max-width: 600px) {
@@ -531,154 +309,135 @@
         }
 
         .main-card {
-            padding: 22px 14px 18px;
-            border-radius: 24px;
+            padding: 24px 16px;
         }
 
         .logo {
-            font-size: 36px;
+            font-size: 32px;
         }
 
-        .btn-supreme {
+        .btn-cta {
             font-size: 15px;
-            padding: 17px 16px;
-        }
-
-        .status-box {
-            font-size: 9px;
-            padding: 14px 4px;
+            padding: 18px;
         }
     }
 </style>
-
 </head>
 <body>
 
-<!-- MODAL 1: PLANOS -->
-<div class="modal-overlay" id="modalPlanos">
-    <div class="modal-card">
-        <h2>Selecione o Acesso</h2>
-
-        <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/3468gkb')">
-            <div class="plan-name">
-                Plano Diário<br>
-                <small>Válido por 24 horas</small>
-            </div>
-            <div class="plan-price">R$ 49,90</div>
-        </div>
-
-        <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/vs5rts8')">
-            <div class="plan-name">
-                Plano Semanal<br>
-                <small>Válido por 7 dias</small>
-            </div>
-            <div class="plan-price">R$ 99,90</div>
-        </div>
-
-        <div class="plan-option" onclick="prepararCompra('https://pay.cakto.com.br/nwho5hq_769689')">
-            <div class="plan-name">
-                Plano Mensal<br>
-                <small style="color: var(--success); font-weight: 900;">Recomendado</small>
-            </div>
-            <div class="plan-price">R$ 149,90</div>
-        </div>
-
-        <button onclick="fecharModais()" class="modal-cancel">Cancelar</button>
-    </div>
-</div>
-
-<!-- MODAL 2: AVISO -->
-<div class="modal-overlay" id="modalAviso">
-    <div class="modal-card">
-        <i class="fas fa-shield-alt" style="color: var(--primary); font-size: 40px; margin-bottom: 18px;"></i>
-        <h2 style="margin-bottom: 12px;">Leia com Atenção</h2>
-        <p style="font-size: 14px; color: #c6ccd3; margin-bottom: 18px; line-height: 1.7;">
-            O e-mail da compra será vinculado à sua chave. Use um e-mail válido para receber o acesso instantaneamente.
-        </p>
-        <button class="btn-confirm" id="btnIrCheckout">Entendi e Quero Comprar</button>
-    </div>
-</div>
-
 <div class="container">
     <div class="main-card">
-        <div class="logo">Tacadinha <span>MOD</span></div>
-        <span class="tagline">The Ultimate System</span>
-
-        <div class="intro-badge">
-            <i class="fas fa-bolt"></i> Visual premium • acesso rápido
+        
+        <!-- CABEÇALHO -->
+        <div class="logo">MÉTODO <span>PRIME</span></div>
+        
+        <div class="tagline-group">
+            <div class="tagline-main">Aprenda Grátis. Lucre Primeiro.</div>
+            <div class="tagline-sub">Pague Depois.</div>
         </div>
 
-        <div class="system-status">
-            <div class="status-box on"><i class="fab fa-android"></i> Android<br>ON</div>
-            <div class="status-box on"><i class="fab fa-apple"></i> iOS<br>ON</div>
-            <div class="status-box on"><i class="fas fa-desktop"></i> PC<br>ON</div>
+        <div class="no-pay-badge">
+            <i class="fas fa-hand-holding-usd"></i> Sem pagamento antecipado
         </div>
 
-        <div class="antiban-badge">
-            <i class="fas fa-user-shield"></i> 100% Anti-Ban Ativo
+        <!-- PILARES -->
+        <div class="grid-pillars">
+            <div class="pillar-box">
+                <i class="fas fa-gift"></i>
+                Comece Grátis
+            </div>
+            <div class="pillar-box">
+                <i class="fas fa-chart-line"></i>
+                Lucre Primeiro
+            </div>
+            <div class="pillar-box">
+                <i class="fas fa-handshake"></i>
+                Pague Depois
+            </div>
         </div>
 
-        <div class="live-info">
-            <i class="fas fa-fire"></i> Acesso rápido • suporte disponível
+        <div class="divider"></div>
+
+        <!-- COMO FUNCIONA -->
+        <div class="section-title">COMO FUNCIONA</div>
+
+        <div class="steps-container">
+            <div class="step-item">
+                <span class="step-number">1</span>
+                <span>Aprende gratuitamente</span>
+            </div>
+            
+            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+
+            <div class="step-item">
+                <span class="step-number">2</span>
+                <span>Faz tudo na sua conta</span>
+            </div>
+
+            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+
+            <div class="step-item">
+                <span class="step-number">3</span>
+                <span>Obtém lucro</span>
+            </div>
+
+            <div style="text-align: center;"><i class="fas fa-arrow-down step-arrow"></i></div>
+
+            <div class="step-item">
+                <span class="step-number">4</span>
+                <span>Compartilha apenas parte do primeiro lucro</span>
+            </div>
         </div>
 
+        <div class="divider"></div>
+
+        <!-- VÍDEO -->
         <div class="main-video">
+            <!-- Substitua o link do YouTube abaixo pelo seu vídeo -->
             <iframe src="https://www.youtube.com/embed/wrXRZGIkKkY?modestbranding=1&rel=0" allowfullscreen></iframe>
         </div>
 
-        <div class="button-stack">
-            <button onclick="abrirPlanos()" class="btn-supreme btn-buy">
-                <i class="fas fa-list-ul"></i> Ver Planos
-            </button>
+        <!-- BOTÃO DE AÇÃO -->
+        <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" target="_blank" class="btn-cta">
+            <i class="fas fa-rocket"></i> QUERO COMEÇAR AGORA
+        </a>
 
-            <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-trial">
-                <i class="fab fa-whatsapp"></i> Teste Grátis 45 Minutos
-            </a>
+        <div class="divider"></div>
 
-            <a href="https://chat.whatsapp.com/Hue1tcqRZJZ3fAkAl05tM0" target="_blank" class="btn-supreme btn-test">
-                <i class="fas fa-users"></i> Grupo Tacadinha
-            </a>
-        </div>
+        <!-- POR QUE CONFIAR? -->
+        <div class="section-title">POR QUE CONFIAR?</div>
 
         <div class="benefits-box">
-            <div class="benefits-title">Vantagens do acesso</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Compatível com Android, iOS e PC</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Liberação rápida após confirmação</div>
-            <div class="benefit-item"><i class="fas fa-check-circle"></i> Suporte e entrada simplificada</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Não cobramos antecipadamente</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Você só paga depois</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Suporte dedicado</div>
+            <div class="benefit-item"><i class="fas fa-check-circle"></i> Atualizações constantes</div>
         </div>
 
-        <div class="footer-nav">
-            <a href="/resgate">Resgate</a>
-            <a href="https://t.me/seu_telegram">Suporte</a>
+        <div class="divider"></div>
+
+        <!-- FAQ -->
+        <div class="section-title">FAQ</div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">Preciso pagar algo antes de começar?</div>
+                <div class="faq-answer">Não! Você acessa todo o conteúdo sem pagar nada antecipadamente.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Quando eu realizo o pagamento?</div>
+                <div class="faq-answer">Apenas após obter seu primeiro resultado/lucro seguindo o método.</div>
+            </div>
         </div>
+
+        <!-- RODAPÉ -->
+        <div class="footer">
+            <p>&copy; Método Prime. Todos os direitos reservados.</p>
+        </div>
+
     </div>
 </div>
-
-<script>
-    let urlFinal = "";
-
-    function abrirPlanos() {
-        document.getElementById('modalPlanos').style.display = 'flex';
-    }
-
-    function prepararCompra(url) {
-        urlFinal = url;
-        document.getElementById('modalPlanos').style.display = 'none';
-        document.getElementById('modalAviso').style.display = 'flex';
-        document.getElementById('btnIrCheckout').onclick = function() {
-            window.location.href = urlFinal;
-        };
-    }
-
-    function fecharModais() {
-        document.getElementById('modalPlanos').style.display = 'none';
-        document.getElementById('modalAviso').style.display = 'none';
-    }
-
-    window.onclick = function(e) {
-        if (e.target.className === 'modal-overlay') fecharModais();
-    };
-</script>
 
 </body>
 </html>
