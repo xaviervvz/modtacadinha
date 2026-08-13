@@ -230,27 +230,75 @@
     .main-video video {
         width: 100%;
         height: auto;
-        max-height: 70vh; /* Evita que o vídeo fique excessivamente longo em telas na vertical */
+        max-height: 70vh;
         display: block;
         border-radius: 20px;
         outline: none;
     }
 
-    .btn-cta-group {
+    /* --- ESTILOS DO FORMULÁRIO DE CAPTURA --- */
+    .lead-form-box {
+        background: rgba(0, 255, 136, 0.03);
+        border: 2px solid var(--success);
+        border-radius: 24px;
+        padding: 24px 18px;
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
         margin-bottom: 24px;
+    }
+
+    .form-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .form-subtitle {
+        font-size: 13px;
+        color: #cbd5e1;
+        margin-bottom: 20px;
+        line-height: 1.4;
+    }
+
+    .form-subtitle strong {
+        color: var(--success);
+    }
+
+    .custom-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+        transition: 0.3s;
+    }
+
+    .form-input:focus {
+        border-color: var(--success);
+        box-shadow: 0 0 12px var(--success-glow);
     }
 
     .btn-cta-green {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
-        padding: 20px;
-        border-radius: 20px;
+        padding: 18px;
+        border-radius: 14px;
         text-decoration: none;
         font-weight: 900;
-        font-size: 16px;
+        font-size: 15px;
         text-transform: uppercase;
         background: linear-gradient(180deg, #00ff88 0%, #00b862 100%);
         color: #000;
@@ -259,6 +307,7 @@
         border: none;
         cursor: pointer;
         animation: btnGreenGlow 2s infinite alternate;
+        margin-top: 6px;
     }
 
     @keyframes btnGreenGlow {
@@ -271,14 +320,14 @@
     }
 
     .btn-cta-green i {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .btn-subtext {
         display: block;
         font-size: 12px;
         color: var(--success);
-        margin-top: 10px;
+        margin-top: 14px;
         font-weight: 700;
         letter-spacing: 0.5px;
     }
@@ -357,7 +406,7 @@
         .container { padding: 16px 10px 30px; }
         .main-card { padding: 24px 14px; }
         .logo { font-size: 34px; }
-        .btn-cta-green { font-size: 14px; padding: 18px 12px; }
+        .btn-cta-green { font-size: 14px; padding: 16px 10px; }
     }
 </style>
 </head>
@@ -437,13 +486,29 @@
             </video>
         </div>
 
-        <!-- BOTÃO CTA NO VERDE DO WHATSAPP -->
-        <div class="btn-cta-group">
-            <a href="https://chat.whatsapp.com/DC2D5d7LABVBEHyf6uy1eY" target="_blank" class="btn-cta-green">
-                <i class="fab fa-whatsapp"></i> ENTRAR NO GRUPO GRATUITO
-            </a>
+        <!-- FORMULÁRIO DE CAPTURA DE WHATSAPP -->
+        <div class="lead-form-box">
+            <div class="form-title">💬 RECEBA SEU ACESSO VIP</div>
+            <p class="form-subtitle">
+                Preencha os dados abaixo e <strong>nossa equipe vai chamar você diretamente no WhatsApp</strong> para liberar seu acesso!
+            </p>
+
+            <!-- IMPORTANTE: Troque 'SEUEMAIL@EXEMPLO.COM' pelo e-mail onde quer receber o aviso com os dados enviados -->
+            <form action="https://formsubmit.co/SEUEMAIL@EXEMPLO.COM" method="POST" class="custom-form">
+                
+                <!-- Desativa o captcha do FormSubmit para o cliente enviar mais rápido -->
+                <input type="hidden" name="_captcha" value="false">
+
+                <input type="text" name="Nome" class="form-input" placeholder="Digite seu primeiro nome" required>
+                <input type="tel" name="WhatsApp" class="form-input" placeholder="Seu WhatsApp com DDD (ex: 11999999999)" required>
+
+                <button type="submit" class="btn-cta-green">
+                    <i class="fab fa-whatsapp"></i> QUERO QUE ME CHAMEM NO WHATSAPP
+                </button>
+            </form>
+
             <span class="btn-subtext">
-                👉 Clique acima para entrar no grupo do WhatsApp e começar agora
+                👉 Preencha com atenção! Chamamos em poucos minutos.
             </span>
         </div>
 
